@@ -103,7 +103,7 @@ const CTASection = ({ onBookClick }) => {
                                     <article
                                         key={step.title}
                                         className="rounded-2xl p-4 h-full"
-                                        style={{ backgroundColor: 'rgba(255,255,255,0.7)' }}
+                                        style={{ backgroundColor: colors.offWhite }}
                                     >
                                         <p className="font-semibold mb-2" style={{ color: colors.plum }}>{step.title}</p>
                                         <p className="text-sm" style={{ color: colors.teal }}>{step.detail}</p>
