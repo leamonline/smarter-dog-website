@@ -79,12 +79,22 @@ const HeroSection = ({ isLoaded, onBookClick }) => {
                                     <span>→</span>
                                 </MagneticButton>
                                 <a
+                                    href="https://wa.me/447507731487"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={() => trackEvent('Engagement', 'Click WhatsApp', 'Hero Section')}
+                                    className="px-7 py-4 rounded-full font-semibold text-base transition-all duration-300 hover:shadow-xl hover:scale-105"
+                                    style={{ backgroundColor: '#25D366', color: colors.plum }}
+                                >
+                                    💬 WhatsApp us
+                                </a>
+                                <a
                                     href="sms:07507731487"
                                     onClick={() => trackEvent('Engagement', 'Click Message', 'Hero Section')}
                                     className="px-7 py-4 rounded-full font-semibold text-base border-2 transition-all duration-300 hover:shadow-xl"
                                     style={{ borderColor: colors.plum, color: colors.plum }}
                                 >
-                                    Message 07507 731487
+                                    Text 07507 731487
                                 </a>
                             </div>
 

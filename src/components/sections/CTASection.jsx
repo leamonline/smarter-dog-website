@@ -68,6 +68,16 @@ const CTASection = ({ onBookClick }) => {
                                 Book your visit
                             </button>
                             <a
+                                href="https://wa.me/447507731487"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="px-10 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:scale-105 flex items-center gap-2"
+                                style={{ backgroundColor: '#25D366', color: colors.plum }}
+                            >
+                                <span>💬</span>
+                                <span>WhatsApp us</span>
+                            </a>
+                            <a
                                 href="sms:07507731487"
                                 className="px-10 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:scale-105 border-2 flex items-center gap-2"
                                 style={{
@@ -76,8 +86,8 @@ const CTASection = ({ onBookClick }) => {
                                     backgroundColor: 'transparent'
                                 }}
                             >
-                                <span>💬</span>
-                                <span>Message 07507 731487</span>
+                                <span>✉️</span>
+                                <span>Text 07507 731487</span>
                             </a>
                         </div>
 

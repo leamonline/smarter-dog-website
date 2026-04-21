@@ -21,10 +21,16 @@ describe('CTASection', () => {
     expect(onBookClick).toHaveBeenCalledWith('CTA Section');
   });
 
-  it('renders message link with correct href', () => {
+  it('renders WhatsApp link as primary contact fallback', () => {
     render(<CTASection onBookClick={() => {}} />);
 
-    expect(screen.getByRole('link', { name: /Message 07507 731487/i })).toHaveAttribute('href', 'sms:07507731487');
+    expect(screen.getByRole('link', { name: /WhatsApp us/i })).toHaveAttribute('href', 'https://wa.me/447507731487');
+  });
+
+  it('renders text link with correct sms href', () => {
+    render(<CTASection onBookClick={() => {}} />);
+
+    expect(screen.getByRole('link', { name: /Text 07507 731487/i })).toHaveAttribute('href', 'sms:07507731487');
   });
 
   it('uses brand pink background', () => {
