@@ -8,7 +8,10 @@ const MobileQuickActions = ({ onBookClick }) => {
     };
 
     return (
-        <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden pointer-events-none">
+        <nav
+            aria-label="Quick actions"
+            className="fixed bottom-0 left-0 right-0 z-40 md:hidden pointer-events-none"
+        >
             <div
                 className="mx-4 mb-4 rounded-2xl border p-2 shadow-2xl pointer-events-auto backdrop-blur-md"
                 style={{
@@ -35,7 +38,7 @@ const MobileQuickActions = ({ onBookClick }) => {
                     </a>
                 </div>
             </div>
-        </div>
+        </nav>
     );
 };
 
