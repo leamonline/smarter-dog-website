@@ -88,6 +88,15 @@ const Navigation = ({ isLoaded, onBookClick }) => {
                     </Link>
 
                     <Link
+                        to="/community"
+                        className="font-medium text-sm transition-colors relative group px-3 py-1 hover-wiggle"
+                        style={{ color: navLinkColor }}
+                    >
+                        Community
+                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-current transition-all duration-300 group-hover:w-full" />
+                    </Link>
+
+                    <Link
                         to="/faq"
                         className="font-medium text-sm transition-colors relative group px-3 py-1 hover-wiggle"
                         style={{ color: navLinkColor }}
@@ -168,6 +177,15 @@ const Navigation = ({ isLoaded, onBookClick }) => {
                         role="menuitem"
                     >
                         Our Approach
+                    </Link>
+                    <Link
+                        to="/community"
+                        className="text-lg font-medium py-2 border-b border-gray-50"
+                        style={{ color: colors.teal }}
+                        onClick={closeMenu}
+                        role="menuitem"
+                    >
+                        Community
                     </Link>
                     <Link
                         to="/faq"

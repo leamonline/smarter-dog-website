@@ -16,6 +16,7 @@ const FAQPage = lazy(() => import('./components/pages/FAQPage'));
 const TermsPage = lazy(() => import('./components/pages/TermsPage'));
 const MattedCoatPolicyPage = lazy(() => import('./components/pages/MattedCoatPolicyPage'));
 const BookingPage = lazy(() => import('./components/pages/BookingPage'));
+const CommunityPage = lazy(() => import('./components/pages/CommunityPage'));
 const NotFoundPage = lazy(() => import('./components/pages/NotFoundPage'));
 
 // Lightweight loading fallback
@@ -52,6 +53,7 @@ function App() {
             <Route path="/terms" element={<TermsPage />} />
             <Route path="/matted-coat-policy" element={<MattedCoatPolicyPage />} />
             <Route path="/book" element={<BookingPage />} />
+            <Route path="/community" element={<CommunityPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>

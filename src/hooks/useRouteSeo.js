@@ -45,6 +45,11 @@ const ROUTE_SEO = {
     description: 'Learn how we handle matted coats safely and comfortably, including welfare-first clipping decisions and aftercare expectations.',
     robots: 'index,follow',
   },
+  '/community': {
+    canonical: '/community',
+    description: 'Local dog walks, pet shops, vets, and pet sitters near Ashton-under-Lyne. Trusted recommendations from Smarter Dog Grooming Salon in Tameside.',
+    robots: 'index,follow',
+  },
   '/houndsly': {
     canonical: '/houndsly',
     description: 'Houndsly shop updates from Smarter Dog Grooming Salon. This page is currently marked as coming soon.',
