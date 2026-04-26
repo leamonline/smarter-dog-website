@@ -111,3 +111,37 @@ jobs:
         path: dist/
         retention-days: 7
 
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [test, build, e2e]
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+    concurrency:
+      group: deploy-bluehost
+      cancel-in-progress: false
+
+    steps:
+    - name: Download build artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: build-artifacts
+        path: dist/
+
+    - name: Deploy to Bluehost via FTPS
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ${{ secrets.BLUEHOST_FTP_HOST }}
+        username: ${{ secrets.BLUEHOST_FTP_USER }}
+        password: ${{ secrets.BLUEHOST_FTP_PASSWORD }}
+        protocol: ftps
+        port: 21
+        local-dir: ./dist/
+        server-dir: /public_html/
+        dangerous-clean-slate: false
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/.well-known/**
+          **/cgi-bin/**
+          **/.htaccess
+
