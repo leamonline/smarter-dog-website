@@ -45,11 +45,14 @@ const PolaroidImage = ({
         if (skipDevelopAnimation) return;
 
         const timers = [];
+        let started = false;
 
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
-                    if (entry.isIntersecting && developStage === 0) {
+                    if (entry.isIntersecting && !started) {
+                        started = true;
+                        observer.disconnect();
                         // Start developing with random delay
                         const firstTimer = setTimeout(() => {
                             setDevelopStage(1);
@@ -75,7 +78,7 @@ const PolaroidImage = ({
             observer.disconnect();
             timers.forEach(clearTimeout);
         };
-    }, [developStage, developDelay, skipDevelopAnimation]);
+    }, [developDelay, skipDevelopAnimation]);
 
     // Get filter based on development stage
     const getImageStyles = () => {
