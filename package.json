@@ -52,7 +52,7 @@
     "rollup-plugin-visualizer": "^7.0.1",
     "sharp": "^0.34.5",
     "tailwindcss": "^4.1.17",
-    "vite": "^7.2.4",
+    "vite": "^8.0.10",
     "vite-plugin-compression": "^0.5.1",
     "vitest": "^4.0.14",
     "vitest-axe": "^0.1.0",
