@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
 import { colors } from '../constants/colors';
@@ -96,14 +96,16 @@ const BookingForm = ({
     const [error, setError] = useState(null);
     const [fieldErrors, setFieldErrors] = useState({});
     const [formData, setFormData] = useState(() => buildInitialFormState(initialFormData));
+    const [previousInitialFormData, setPreviousInitialFormData] = useState(initialFormData);
     const getFieldErrorId = (fieldName) => `${fieldName}-error`;
 
-    useEffect(() => {
+    if (initialFormData !== previousInitialFormData) {
+        setPreviousInitialFormData(initialFormData);
         setFormData(buildInitialFormState(initialFormData));
         setFieldErrors({});
         setError(null);
         setStep('form');
-    }, [initialFormData]);
+    }
 
     const validateForm = () => {
         const errors = {};
