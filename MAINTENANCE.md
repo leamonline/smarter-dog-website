@@ -85,6 +85,22 @@ Before deploying:
 - [ ] Build succeeds: `npm run build`
 - [ ] Check bundle size: `npm run build:analyze`
 
+- [ ] ### Bluehost FTP Deployment (CI)
+
+The `deploy` job in `.github/workflows/ci.yml` syncs `dist/` to Bluehost via FTPS using `SamKirkland/FTP-Deploy-Action`.
+
+**FTP account scope matters.** The account behind the `BLUEHOST_FTP_USER` secret is a sub-FTP account scoped to `/home1/<cpanel-user>/public_html`. Because that account's FTP root *is* `public_html/`, the workflow uses `server-dir: ./`.
+
+Do **not** use `/public_html/` (absolute) or `public_html/` (relative) with this account — both resolve to `public_html/public_html/` and the deploy will fail when it tries to step into `public_html/assets/`.
+
+**If the FTP account is ever recreated or rotated:**
+
+- Sub-account scoped to `public_html/` → keep `server-dir: ./`
+- Main cPanel user (lands in `/home1/<cpanel-user>/`, above the website folder) → change `server-dir` to `public_html/` (no leading slash)
+- Sub-account scoped to a subfolder of `public_html/` (e.g. `public_html/leam`) → won't work; recreate it scoped to `public_html` itself
+
+The action stores its incremental-sync state in `.ftp-deploy-sync-state.json` at the FTP root. If you switch FTP accounts, the first deploy under the new account will look like a "first publish" (uploads everything) until that file exists; subsequent deploys are diffs.
+
 ---
 
 ## Quick Commands Reference
@@ -112,4 +128,4 @@ For technical issues with the website:
 
 ---
 
-*Last updated: December 2025*
+*Last updated: April 2026*
