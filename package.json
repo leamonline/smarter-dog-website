@@ -49,7 +49,7 @@
     "jest-axe": "^10.0.0",
     "jsdom": "^27.2.0",
     "postcss": "^8.5.8",
-    "rollup-plugin-visualizer": "^6.0.5",
+    "rollup-plugin-visualizer": "^7.0.1",
     "sharp": "^0.34.5",
     "tailwindcss": "^4.1.17",
     "vite": "^7.2.4",
