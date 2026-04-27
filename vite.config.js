@@ -34,10 +34,12 @@ export default defineConfig({
     chunkSizeWarningLimit: 500, // 500KB
     rollupOptions: {
       output: {
-        // Manual chunking for better code splitting
-        manualChunks: {
-          'react-vendor': ['react', 'react-dom'],
-          'router-vendor': ['react-router-dom'],
+        // Manual chunking for better code splitting.
+        // Function form is required by rolldown (Vite 8's default bundler).
+        manualChunks: (id) => {
+          if (!id.includes('node_modules')) return;
+          if (id.includes('react-router')) return 'router-vendor';
+          if (id.includes('/react-dom/') || /\/react\//.test(id)) return 'react-vendor';
         },
       },
     },
