@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { dismissLandingPopupBeforeNavigation } from './test-helpers.js';
 
 async function acceptCookiesIfVisible(page) {
   const acceptButton = page.getByRole('button', { name: 'Accept' });
@@ -8,6 +9,10 @@ async function acceptCookiesIfVisible(page) {
 }
 
 test.describe('Performance sanity', () => {
+  test.beforeEach(async ({ page }) => {
+    await dismissLandingPopupBeforeNavigation(page);
+  });
+
   test('navigation timings are within reasonable bounds', async ({ page }) => {
     await page.goto('/');
     await acceptCookiesIfVisible(page);
