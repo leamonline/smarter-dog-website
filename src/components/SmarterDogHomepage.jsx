@@ -17,6 +17,7 @@ import SectionDivider from './SectionDivider';
 import BookingModal from './BookingModal';
 import ScrollToTop from './ScrollToTop';
 import MobileQuickActions from './MobileQuickActions';
+import LandingPopup from './LandingPopup';
 
 import { trackEvent } from '../utils/analytics';
 
@@ -68,6 +69,7 @@ const SmarterDogHomepage = () => {
         prefillSummary={bookingPrefillSummary}
       />
       <ScrollToTop />
+      <LandingPopup onBookClick={handleBookClick} />
     </div>
   );
 };
