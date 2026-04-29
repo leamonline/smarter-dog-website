@@ -9,6 +9,13 @@ async function acceptCookiesIfVisible(page) {
 
 test.describe('Visual sanity', () => {
   test.beforeEach(async ({ page }) => {
+    await page.addInitScript(() => {
+      try {
+        localStorage.setItem('landingPopupDismissed_v2', 'true');
+      } catch {
+        // localStorage unavailable — popup may show and block interactions
+      }
+    });
     await page.goto('/');
     await acceptCookiesIfVisible(page);
   });
