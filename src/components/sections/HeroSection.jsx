@@ -65,8 +65,8 @@ const HeroSection = ({ isLoaded, onBookClick }) => {
                                 No fuss. No rushing. Just experienced local care.
                             </p>
 
-                            {/* CTA + direct contact */}
-                            <div className="mt-4 flex flex-wrap items-center gap-3">
+                            {/* CTA + direct contact (hidden on mobile — sticky footer covers these) */}
+                            <div className="mt-4 hidden md:flex flex-wrap items-center gap-3">
                                 <MagneticButton
                                     onClick={() => onBookClick('Hero Section')}
                                     className="px-10 py-4 rounded-full font-semibold text-base transition-all duration-300 hover:shadow-xl flex items-center gap-3 hover-lift active-squish"
