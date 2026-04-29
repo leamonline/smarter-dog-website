@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
+import { dismissLandingPopupBeforeNavigation } from './test-helpers.js';
 
 async function acceptCookiesIfVisible(page) {
   const acceptButton = page.getByRole('button', { name: 'Accept' });
@@ -11,13 +12,7 @@ async function acceptCookiesIfVisible(page) {
 test.describe('Homepage E2E', () => {
   test.beforeEach(async ({ page }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' });
-    await page.addInitScript(() => {
-      try {
-        localStorage.setItem('landingPopupDismissed_v2', 'true');
-      } catch {
-        // localStorage unavailable — popup may show and block interactions
-      }
-    });
+    await dismissLandingPopupBeforeNavigation(page);
     await page.goto('/');
     await acceptCookiesIfVisible(page);
   });
