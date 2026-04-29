@@ -4,7 +4,7 @@ import { useFocusTrap } from '../hooks/useFocusTrap';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
 import { trackEvent } from '../utils/analytics';
 
-const STORAGE_KEY = 'landingPopupDismissed_v1';
+const STORAGE_KEY = 'landingPopupDismissed_v2';
 const SHOW_DELAY_MS = 1200;
 
 const LandingPopup = ({ onBookClick }) => {
@@ -51,11 +51,11 @@ const LandingPopup = ({ onBookClick }) => {
 
     return (
         <div
-            className="fixed inset-0 z-[60] flex items-center justify-center p-4"
+            className="fixed inset-0 z-[60] flex items-center justify-center p-3 sm:p-4 overflow-y-auto"
             role="presentation"
         >
             <div
-                className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+                className="fixed inset-0 bg-black/50 backdrop-blur-sm"
                 onClick={handleClose}
                 aria-hidden="true"
             />
@@ -66,10 +66,10 @@ const LandingPopup = ({ onBookClick }) => {
                 aria-modal="true"
                 aria-labelledby="landing-popup-title"
                 aria-describedby="landing-popup-body"
-                className={`relative w-full max-w-md md:max-w-lg bg-white rounded-3xl shadow-2xl overflow-hidden max-h-[95vh] overflow-y-auto ${prefersReducedMotion ? '' : 'animate-fade-in-up'}`}
+                className={`relative w-full max-w-md md:max-w-lg bg-white rounded-3xl shadow-2xl my-auto max-h-[calc(100dvh-1.5rem)] overflow-y-auto overscroll-contain ${prefersReducedMotion ? '' : 'animate-fade-in-up'}`}
             >
                 {/* Header band with decorations + logo */}
-                <div className="relative pt-6 pb-2 px-6" style={{ backgroundColor: colors.cyanLight }}>
+                <div className="relative pt-5 pb-2 px-5 sm:pt-6 sm:px-6" style={{ backgroundColor: colors.cyanLight }}>
                     {/* Paw print - top left */}
                     <svg
                         aria-hidden="true"
@@ -169,13 +169,13 @@ const LandingPopup = ({ onBookClick }) => {
                 </div>
 
                 {/* Body */}
-                <div className="px-6 pb-6 pt-2 md:px-8 md:pb-8 relative">
+                <div className="px-5 pb-5 pt-2 sm:px-6 sm:pb-6 md:px-8 md:pb-8 relative">
                     <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 md:gap-6 items-start">
                         <div className="min-w-0">
                             {/* Title */}
                             <h2
                                 id="landing-popup-title"
-                                className="heading-font font-bold text-4xl md:text-5xl text-center md:text-left"
+                                className="heading-font font-bold text-3xl sm:text-4xl md:text-5xl text-center md:text-left"
                                 style={{ color: colors.plum, lineHeight: 1.05, letterSpacing: '-0.01em' }}
                             >
                                 Bank Holiday<br />Update

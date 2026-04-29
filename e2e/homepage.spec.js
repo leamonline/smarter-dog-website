@@ -11,6 +11,13 @@ async function acceptCookiesIfVisible(page) {
 test.describe('Homepage E2E', () => {
   test.beforeEach(async ({ page }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.addInitScript(() => {
+      try {
+        localStorage.setItem('landingPopupDismissed_v2', 'true');
+      } catch {
+        // localStorage unavailable — popup may show and block interactions
+      }
+    });
     await page.goto('/');
     await acceptCookiesIfVisible(page);
   });
@@ -31,8 +38,10 @@ test.describe('Homepage E2E', () => {
     await expect(reviewsHeading).toBeVisible();
   });
 
-  test('opens booking modal from CTA button', async ({ page }) => {
-    const cta = page.getByRole('button', { name: /Book your visit/i }).first();
+  test('opens booking modal from CTA button', async ({ page, isMobile }) => {
+    // Hero CTAs are hidden on mobile — sticky MobileQuickActions provides Book now there.
+    const ctaName = isMobile ? /^Book now$/i : /^Book your visit$/i;
+    const cta = page.getByRole('button', { name: ctaName }).first();
     await cta.click();
 
     await expect(page.getByRole('dialog')).toBeVisible();
